@@ -7,20 +7,20 @@ import Timeline from "../components/Timeline";
 import config from "../../config.json";
 
 export default function HomePage() {
+  const [filterValue, setFilterValue] = React.useState<string>('');
+
   return (
-    <>
-      <ResetCSS />
       <div>
-        <Menu />
+        <Menu filterValue={filterValue} setFilterValue={setFilterValue} />
 
         <Header
           github={config.github}
           name={config.name}
           job={config.job}
+          bg={config.bg}
         />
 
-        <Timeline playlists={config.playlists} />
+        <Timeline searchValue={filterValue} playlists={config.playlists} />
       </div>
-    </>
   );
 }

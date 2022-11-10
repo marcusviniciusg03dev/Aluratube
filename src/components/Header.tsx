@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 const StyledHeader = styled.header`
   width: 100%;
-  margin-top: 56px;
-  padding: 16px 32px;
+  background-color: ${({ theme }) => theme.backgroundLevel1};
 
   #user-info {
     display: flex;
     align-items: center;
     gap: 16px;
+    padding: 16px 32px;
+    color: ${({ theme }) => theme.textColorBase};
 
     img {
       height: 80px;
@@ -23,18 +24,17 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Header = ({ github, name, job }) => {
+const StyledBanner = styled.div<{ bg?: string }>`
+  background-image: ${({ bg }) => bg ? `url(${bg})` : 'linear-gradient(to top, transparent, rga(0, 0, 0, .1)'};
+  background-position: 50%;
+  width: 100%;
+  height: 230px;
+`;
+
+const Header = ({ github, name, job, bg }) => {
   return (
     <StyledHeader>
-      {false && (
-        <img
-          id="banner-image"
-          src={
-            "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
-          }
-        />
-      )}
-
+      <StyledBanner bg={bg} />
       <div id="user-info">
         <img id="profile-image" src={`https://github.com/${github}.png`} />
         <div>

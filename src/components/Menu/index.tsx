@@ -1,6 +1,8 @@
 
 import React from "react";
 import styled from "styled-components";
+import Search from "./components/Search";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
 const StyledMenu = styled.header`
     display: flex;
@@ -8,10 +10,11 @@ const StyledMenu = styled.header`
     padding: 0 16px;
     top: 0;
     position: fixed;
-    background-color: #FFF;
-    border: 1px solid #e5e5e5;
+    background-color: ${({ theme }) => theme.backgroundLevel1};
+    border: 1px solid ${({ theme }) => theme.borderBase};
     width: 100%;
     align-items: center;
+    justify-content: space-between;
 
     .logo {
         width: 100%;
@@ -23,16 +26,21 @@ const StyledMenu = styled.header`
     }
 
     .text {
-        fill: #222;
+        fill: ${({ theme }) => theme.textColorBase};
     }
 `;
 
-const Menu: React.FC = () => {
+const Menu: React.FC<{
+    filterValue: string,
+    setFilterValue: React.Dispatch<React.SetStateAction<string>>
+}> = ({ filterValue, setFilterValue }) => {
     return (
         <StyledMenu>
             <div>
                 <Logo />
             </div>
+            <Search filterValue={filterValue} setFilterValue={setFilterValue} />
+            <ThemeSwitcher />
         </StyledMenu>
     )
 }
