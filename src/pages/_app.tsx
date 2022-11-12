@@ -1,5 +1,6 @@
 import React from "react";
-import { ThemeProvider } from "styled-components"
+import { ThemeProvider } from "styled-components";
+import RegisterVideo from "../components/RegisterVideo";
 import ResetCSS from "../components/ResetCSS";
 import ThemeModeProvider, { ThemeModeContext } from "../contexts/ThemeModeContext";
 
@@ -27,6 +28,7 @@ const MyApp = ({ Component, pageProps }) => {
             <ThemeProvider theme={theme[context.mode]}>
                 <ResetCSS />
                 <Component {...pageProps} />
+                <RegisterVideo />
             </ThemeProvider>
     )
 }

@@ -15,6 +15,7 @@ const StyledMenu = styled.header`
     width: 100%;
     align-items: center;
     justify-content: space-between;
+    z-index: 1;
 
     .logo {
         width: 100%;

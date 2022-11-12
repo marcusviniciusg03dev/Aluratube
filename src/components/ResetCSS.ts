@@ -9,12 +9,18 @@ export default createGlobalStyle`
 
     body {
         font-family: sans-serif;
+        color: ${({ theme }) => theme.textColorBase};
+        display: flex;
+        flex: 1;
+        overflow-x: hidden;
+        overflow-y: visible;
     }
 
     html {
         display: flex;
         flex-direction: column;
         min-height: 100%;
+        overflow-y: initial;
     }
 
     button, a {
@@ -25,5 +31,21 @@ export default createGlobalStyle`
             opacity: .7;
             transition: all 0.3s;
         }
+    }
+
+    ::-webkit-scrollbar {
+        width: 0px;
+        height: 8px;
+        background-color: transparent;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        width: 0px;
+        height: 8px;
+        background-color: transparent;
+        -webkit-appearance: none;
+        appearance: none;
     }
 `;
