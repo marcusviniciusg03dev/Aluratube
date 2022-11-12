@@ -16,11 +16,10 @@ const StyledMenu = styled.header`
     align-items: center;
     justify-content: space-between;
     z-index: 1;
-
+    
     .logo {
         width: 100%;
         max-width: 80px;
-
         @media (min-width: 600px) {
             max-width: 127px;
         }

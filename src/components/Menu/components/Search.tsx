@@ -9,6 +9,9 @@ const StyledSearch = styled.div`
     border: 1px solid ${({ theme }) => theme.borderBase};
     overflow: hidden;
     border-radius: 2px;
+    @media (max-width: 620px) {
+        max-width:  250px;
+    }
 
     input {
         width: 80%;

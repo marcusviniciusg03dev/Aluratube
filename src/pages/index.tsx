@@ -4,11 +4,16 @@ import Menu from "../components/Menu";
 import Timeline from "../components/Timeline";
 
 import config from "../../config.json";
+import Head from "next/head";
 
 export default function HomePage() {
   const [filterValue, setFilterValue] = React.useState<string>('');
 
   return (
+  <>
+  <Head>
+    <title>Aluratube</title>
+  </Head>
       <div
         style={{
           display: 'flex',
@@ -27,5 +32,6 @@ export default function HomePage() {
 
         <Timeline searchValue={filterValue} playlists={config.playlists} />
       </div>
+      </>
   );
 }

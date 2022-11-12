@@ -25,7 +25,7 @@ const StyledHeader = styled.header`
 
 const StyledBanner = styled.div<{ bg?: string }>`
   background-image: ${({ bg }) => bg ? `url(${bg})` : 'linear-gradient(to top, transparent, rga(0, 0, 0, .1)'};
-  background-position: 50%;
+  background-size: 100%;
   width: 100%;
   height: 230px;
 `;
