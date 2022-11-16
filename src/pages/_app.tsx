@@ -2,9 +2,10 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import RegisterVideo from "../components/RegisterVideo";
 import ResetCSS from "../components/ResetCSS";
-import ThemeModeProvider, { ThemeModeContext } from "../contexts/ThemeModeContext";
+import PlaylistProvider from "../contexts/PlaylistsContext";
+import ThemeModeProvider, { ThemeModeContext, ThemeModes } from "../contexts/ThemeModeContext";
 
-const theme = {
+const themes = {
     light: {
         backgroundBase: "#f9f9f9",
         backgroundLevel1: "#ffffff",
@@ -18,18 +19,20 @@ const theme = {
         backgroundLevel2: "#313131",
         borderBase: "#383838",
         textColorBase: "#FFFFFF",
-    }
+    },
 };
 
 const MyApp = ({ Component, pageProps }) => {
-    const context = React.useContext(ThemeModeContext);
+    const themeModecontext = React.useContext(ThemeModeContext);
 
     return (
-            <ThemeProvider theme={theme[context.mode]}>
+        <ThemeProvider theme={themes[themeModecontext.mode]}>
+            <PlaylistProvider>
                 <ResetCSS />
                 <Component {...pageProps} />
                 <RegisterVideo />
-            </ThemeProvider>
+            </PlaylistProvider>
+        </ThemeProvider>
     )
 }
 

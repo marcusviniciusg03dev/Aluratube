@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components"
-import { ThemeModeContext } from "../../../contexts/ThemeModeContext";
+import { ThemeModeContext, ThemeModes } from "../../../contexts/ThemeModeContext";
 
-const StyledSwitch = styled.div`
+const StyledSwitch = styled.div<{ mode: ThemeModes }>`
     background-color: #333;
     border: 0;
     border-radius: 10000px;
@@ -45,10 +45,7 @@ const StyledSwitch = styled.div`
         left: 0;
         transition: all .3s;
         cursor: pointer;
-    }
-
-    #toggle-theme:checked + label:before {
-        transform: translateX(100%);
+        ${({ mode }) => mode == 'dark' && 'transform: translateX(100%);'}
     }
 `;
 
@@ -56,7 +53,7 @@ const ThemeSwitcher = () => {
     const { mode, toggleMode } = React.useContext(ThemeModeContext);
 
     return (
-        <StyledSwitch>
+        <StyledSwitch mode={useContext(ThemeModeContext).mode}>
             <input id="toggle-theme" type="checkbox" value={mode == 'dark' ? 'true' : 'false'} onChange={toggleMode} />
             <label htmlFor="toggle-theme">
                 <span>

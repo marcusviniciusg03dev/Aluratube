@@ -1,6 +1,13 @@
 import React from "react";
 
-export const ThemeModeContext = React.createContext({
+export type ThemeModes = 'light' | 'dark';
+
+interface IThemeModeContext {
+    mode: ThemeModes
+    toggleMode: () => void
+}
+
+export const ThemeModeContext = React.createContext<IThemeModeContext>({
     mode: 'light',
     toggleMode: () => {
         alert('i need to be implemented.')
@@ -8,10 +15,20 @@ export const ThemeModeContext = React.createContext({
 });
 
 const ThemeModeProvider = ({ children }) => {
-    const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+    const [mode, setMode] = React.useState<ThemeModes>('light');
+
+    React.useEffect(() => {
+        if(!window) return;
+
+        const modeFromStorage = window.localStorage.getItem('theme_mode');
+
+        setMode(['light', 'dark'].some(value => value == modeFromStorage) ? (modeFromStorage as ThemeModes) : 'light');
+    }, [mode]);
 
     const toggleMode = () => {
-        setMode(mode == 'light' ? 'dark' : 'light');
+        const toMode = mode == 'light' ? 'dark' : 'light';
+        window.localStorage.setItem('theme_mode', toMode);
+        setMode(toMode);
     }
 
     return (

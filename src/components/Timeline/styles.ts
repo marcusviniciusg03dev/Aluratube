@@ -29,11 +29,11 @@ const StyledTimeline = styled.div`
             overflow-x: scroll;
             scroll-snap-type: mandatory;
 
-          &:hover::-webkit-scrollbar-thumb {
-              background-color: rgba(0, 0, 0, .5);
-              border-radius: 8px;
-              transition: all .3s;
-          }
+            &:hover::-webkit-scrollbar-thumb {
+                background-color: rgba(0, 0, 0, .5);
+                border-radius: 8px;
+                transition: all .3s;
+            }
 
             img {
               height: auto;
@@ -54,38 +54,19 @@ const StyledTimeline = styled.div`
             }
         }
     }
+
+    section[id="favorites-section"] {
+
+        div {
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            grid-auto-columns: minmax(120px, 1fr);
+        }
+
+        img {
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+        }
+    }
 `;
 
-const Timeline = ({ searchValue, playlists, ...props }) => {
-    const playlistNames = Object.keys(playlists);
-  
-    return (
-      <StyledTimeline>
-        {playlistNames.map((playlistName) => {
-          const videos = playlists[playlistName];
-  
-          return (
-            <section key={playlistName}>
-              <h2>{playlistName}</h2>
-              <div>
-                {videos.filter(video => {
-                  const titleNormalized = video.title.toLowerCase();
-                  const searchValueNormalized = searchValue.toLowerCase();
-                  return titleNormalized.includes(searchValueNormalized);
-                }).map((video) => {
-                  return (
-                    <a href={video.url} key={video.url}>
-                      <img src={video.thumb} />
-                      <span>{video.title}</span>
-                    </a>
-                  );
-                })}
-              </div>
-            </section>
-          );
-        })}
-      </StyledTimeline>
-    );
-  }
-
-export default Timeline
+export default StyledTimeline

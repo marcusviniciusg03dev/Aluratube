@@ -5,9 +5,8 @@ const useForm = (initialData) => {
 
   return {
     values,
-    handleChange: (event) => {
-      const field = event.target.name;
-      const value = event.target.value;
+    handleChange: ({ target: { name, value } }) => {
+      const field = name;
 
       setValues((prevState) => ({
         ...prevState,

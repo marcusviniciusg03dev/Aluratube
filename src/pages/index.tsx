@@ -7,18 +7,18 @@ import config from "../../config.json";
 import Head from "next/head";
 
 export default function HomePage() {
-  const [filterValue, setFilterValue] = React.useState<string>('');
+  const [filterValue, setFilterValue] = React.useState<string>("");
 
   return (
-  <>
-  <Head>
-    <title>Aluratube</title>
-  </Head>
+    <>
+      <Head>
+        <title>Aluratube</title>
+      </Head>
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          flex: 1
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
         }}
       >
         <Menu filterValue={filterValue} setFilterValue={setFilterValue} />
@@ -30,8 +30,11 @@ export default function HomePage() {
           bg={config.bg}
         />
 
-        <Timeline searchValue={filterValue} playlists={config.playlists} />
+        <Timeline
+          searchValue={filterValue}
+          favorites={config.favorites}
+        />
       </div>
-      </>
+    </>
   );
 }

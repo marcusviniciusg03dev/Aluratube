@@ -23,26 +23,11 @@ const StyledHeader = styled.header`
   }
 `;
 
-const StyledBanner = styled.div<{ bg?: string }>`
+export const StyledBanner = styled.div<{ bg?: string }>`
   background-image: ${({ bg }) => bg ? `url(${bg})` : 'linear-gradient(to top, transparent, rga(0, 0, 0, .1)'};
   background-size: 100%;
   width: 100%;
   height: 230px;
 `;
 
-const Header = ({ github, name, job, bg }) => {
-  return (
-    <StyledHeader>
-      <StyledBanner bg={bg} />
-      <div id="user-info">
-        <img id="profile-image" src={`https://github.com/${github}.png`} />
-        <div>
-          <h2>{name}</h2>
-          <p>{job}</p>
-        </div>
-      </div>
-    </StyledHeader>
-  );
-};
-
-export default Header;
+export default StyledHeader;

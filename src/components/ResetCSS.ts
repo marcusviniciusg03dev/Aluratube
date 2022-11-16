@@ -23,6 +23,11 @@ export default createGlobalStyle`
         overflow-y: initial;
     }
 
+    #__next {
+        display: flex;
+        flex: 1;
+    }
+
     button, a {
         text-decoration: none;
         opacity: 1;
